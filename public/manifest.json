@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "PomoFlow",
+  "version": "1.0.0",
+  "description": "Pomodoro Timer, Tasks & Notes",
+
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+
+  "icons": {
+    "16": "chrome-icons/icon-16.png",
+    "32": "chrome-icons/icon-32.png",
+    "48": "chrome-icons/icon-48.png",
+    "128": "chrome-icons/icon-128.png"
+  },
+
+  "action": {
+    "default_title": "PomoFlow - Pomodoro Timer, Tasks & Notes",
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "chrome-icons/icon-16.png",
+      "32": "chrome-icons/icon-32.png",
+      "48": "chrome-icons/icon-48.png",
+      "128": "chrome-icons/icon-128.png"
+    }
+  },
+
+  "permissions": ["storage", "alarms", "notifications"]
+}
