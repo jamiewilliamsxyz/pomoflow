@@ -1,6 +1,6 @@
-import Timer from "./components/Timer";
+import { Timer } from "./components/Timer";
 
-function App() {
+export const App = () => {
   return (
     <div>
       <div className="mt-6 mb-6 flex flex-col gap-3 text-center">
@@ -11,6 +11,4 @@ function App() {
       <Timer />
     </div>
   );
-}
-
-export default App;
+};

@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import NavItem from "./ui/NavItem";
+import { NavItem } from "./ui/NavItem";
 
 import TimerIcon from "../assets/icons/timer.svg";
 import TasksIcon from "../assets/icons/tasks.svg";
@@ -18,7 +18,7 @@ const rightNavItems = [
   { name: "Settings", path: "/settings", icon: SettingsIcon },
 ];
 
-const Navbar = () => {
+export const Navbar = () => {
   const location = useLocation();
 
   return (
@@ -48,5 +48,3 @@ const Navbar = () => {
     </div>
   );
 };
-
-export default Navbar;

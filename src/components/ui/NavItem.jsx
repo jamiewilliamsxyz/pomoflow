@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const NavItem = ({ path, active, ariaLabel, icon }) => {
+export const NavItem = ({ path, active, ariaLabel, icon }) => {
   return (
     <Link
       to={path}
@@ -13,5 +13,3 @@ const NavItem = ({ path, active, ariaLabel, icon }) => {
     </Link>
   );
 };
-
-export default NavItem;
