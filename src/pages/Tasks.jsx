@@ -1,7 +1,9 @@
+import { Header } from "../components/Header";
+
 export const Tasks = () => {
   return (
     <div>
-      <h1>Tasks</h1>
+      <Header pageTitle="Tasks" />
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { NavItem } from "./ui/NavItem";
 import TimerIcon from "../assets/icons/timer.svg";
 import TasksIcon from "../assets/icons/tasks.svg";
 import NotesIcon from "../assets/icons/notes.svg";
+import StatsIcon from "../assets/icons/stats.svg";
 import CustomiseIcon from "../assets/icons/customise.svg";
 import SettingsIcon from "../assets/icons/settings.svg";
 
@@ -14,6 +15,7 @@ const leftNavItems = [
 ];
 
 const rightNavItems = [
+  { name: "Stats", path: "/stats", icon: StatsIcon },
   { name: "Customise", path: "/customise", icon: CustomiseIcon },
   { name: "Settings", path: "/settings", icon: SettingsIcon },
 ];

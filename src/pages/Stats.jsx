@@ -1,9 +1,9 @@
 import { Header } from "../components/Header";
 
-export const Customise = () => {
+export const Stats = () => {
   return (
     <div>
-      <Header pageTitle="Customise" />
+      <Header pageTitle="Stats" />
     </div>
   );
 };
