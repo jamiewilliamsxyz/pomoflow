@@ -13,7 +13,7 @@ export const Timer = () => {
 
   const [lbIntervalLength, setLbIntervalLength] = useState(4);
 
-  // Move this to settings
+  // Move this to settings, also make reset count put the user back onto the pomodoro timer
   const calculateLbIntervals = (lbIntervalLength) => {
     const result = [];
     for (let i = 1; i < 99; i++) {

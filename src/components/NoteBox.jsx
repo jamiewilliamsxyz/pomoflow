@@ -6,7 +6,7 @@ export const NoteBox = () => {
   return (
     <textarea
       placeholder="Notes"
-      className="textarea resize-none w-full h-96"
+      className="textarea resize-none w-full h-80"
       value={userNotes}
       onChange={(e) => {
         setUserNotes(e.target.value);
