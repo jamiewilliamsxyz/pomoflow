@@ -1,9 +1,9 @@
-import { Header } from "../components/Header";
+import { PageLayout } from "../components/PageLayout";
 
 export const Stats = () => {
   return (
-    <div>
-      <Header pageTitle="Stats" />
-    </div>
+    <PageLayout pageTitle="Stats">
+      <div></div>
+    </PageLayout>
   );
 };

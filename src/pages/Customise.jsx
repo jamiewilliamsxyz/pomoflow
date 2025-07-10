@@ -1,9 +1,0 @@
-import { Header } from "../components/Header";
-
-export const Customise = () => {
-  return (
-    <div>
-      <Header pageTitle="Customise" />
-    </div>
-  );
-};

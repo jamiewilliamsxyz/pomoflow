@@ -1,14 +1,12 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: light --default;
+  themes: all;
 }
 
 body {
   font-family: "Inter", sans-serif;
   width: 360px;
   height: 550px;
-  padding: 16px;
-
   overflow: hidden;
 }
 
@@ -17,6 +15,7 @@ h1 {
   font-weight: 600;
 }
 
-p {
-  font-size: 16px;
+p,
+i {
+  font-size: 20px;
 }

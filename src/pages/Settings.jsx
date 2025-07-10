@@ -1,9 +1,9 @@
-import { Header } from "../components/Header";
+import { PageLayout } from "../components/PageLayout";
 
 export const Settings = () => {
   return (
-    <div>
-      <Header pageTitle="Settings" />
-    </div>
+    <PageLayout pageTitle="Settings">
+      <div></div>
+    </PageLayout>
   );
 };

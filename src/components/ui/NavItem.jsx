@@ -1,15 +1,14 @@
 import { Link } from "react-router-dom";
 
-export const NavItem = ({ path, active, ariaLabel, icon }) => {
+export const NavItem = ({ path, active, icon }) => {
   return (
     <Link
       to={path}
-      aria-label={ariaLabel}
-      className={`btn btn-ghost btn-square btn-sm ${
-        active ? "bg-primary text-primary-content" : ""
+      className={`btn btn-ghost btn-square btn-md ${
+        active ? "bg-base-300 text-primary-content" : ""
       }`}
     >
-      <img src={icon} alt={`${ariaLabel} icon`} className="w-5 h-5" />
+      <span className="text-[20px]">{icon}</span>
     </Link>
   );
 };
