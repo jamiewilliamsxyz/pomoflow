@@ -1,3 +1,5 @@
 export const LinkButton = ({ ...props }) => {
-  return <button {...props} className="link link-primary text-[20px]"></button>;
+  return (
+    <button {...props} className="link link-secondary text-[20px]"></button>
+  );
 };

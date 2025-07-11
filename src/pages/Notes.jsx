@@ -6,7 +6,7 @@ export const Notes = () => {
     <PageLayout pageTitle="Notes">
       <textarea
         placeholder="Notes"
-        className="textarea textarea-primary textarea-lg resize-none w-full h-80"
+        className="textarea textarea-lg resize-none w-full h-80"
       />
       <Button>Save</Button>
     </PageLayout>
