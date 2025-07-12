@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 
-export const TaskCard = ({ defaultContent, id }) => {
+export const TaskCard = ({ defaultContent, id, onRemove }) => {
   const [content, setContent] = useState("");
 
   const handleRemove = () => {
-    // Get the id of the task (it has an id of the id, see the div below)
-    // Send a message to background of the id with sendMessage()
+    onRemove(id);
   };
 
   useEffect(() => {
@@ -15,10 +14,7 @@ export const TaskCard = ({ defaultContent, id }) => {
   }, []);
 
   return (
-    <div
-      id={id}
-      className="flex flex-row gap-2 items-center bg-base-300 p-2 rounded-lg shadow-x"
-    >
+    <div className="flex flex-row gap-2 items-center bg-base-300 p-2 rounded-lg shadow-x">
       <input type="checkbox" className="checkbox checkbox-success" />
       {/* Check if the task in the array is checked or not checked. When checked run a function to send a message to change the item matching the id to completed: true */}
 

@@ -3,24 +3,23 @@ import { PageLayout } from "../components/PageLayout";
 import { Button } from "../components/ui/Button";
 
 export const Notes = () => {
-  // Notes Logic
-  const [noteContent, setNoteContent] = useState("");
+  const [userNotes, setUserNotes] = useState("");
 
   useEffect(() => {
-    chrome.storage.local.get(["userNotes"]).then((result) => {
-      setNoteContent(result.userNotes || "");
+    chrome.storage.local.get(["notesData"]).then((result) => {
+      setUserNotes(result.notesData || "");
     });
   }, []);
 
   const handleSave = () => {
-    chrome.storage.local.set({ userNotes: noteContent });
+    chrome.storage.local.set({ notesData: userNotes });
   };
 
   return (
     <PageLayout pageTitle="Notes">
       <textarea
-        onChange={(e) => setNoteContent(e.target.value)}
-        value={noteContent}
+        onChange={(e) => setUserNotes(e.target.value)}
+        value={userNotes}
         placeholder="Notes"
         className="textarea resize-none w-full h-80 focus:outline-0"
       />
