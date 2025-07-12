@@ -27,7 +27,7 @@ export const TaskCard = ({ defaultContent, id }) => {
         value={content}
         onChange={(e) => setContent(e.target.value)}
         placeholder="Task"
-        className="input"
+        className="input focus:outline-0"
       />
 
       <button
