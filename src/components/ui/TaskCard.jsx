@@ -37,7 +37,7 @@ export const TaskCard = ({
   }, [taskContent, taskCompleted]);
 
   return (
-    <div className="flex flex-row gap-2 items-center bg-base-300 p-2 rounded-lg shadow-x">
+    <div className="flex flex-row gap-2 items-center bg-base-300 p-2 rounded-lg shadow-xl">
       <input
         type="checkbox"
         onChange={handleCompleted}

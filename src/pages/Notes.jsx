@@ -21,7 +21,7 @@ export const Notes = () => {
         onChange={(e) => setUserNotes(e.target.value)}
         value={userNotes}
         placeholder="Notes"
-        className="textarea resize-none w-full h-80 focus:outline-0"
+        className="textarea textarea-lg resize-none w-full h-96 focus:outline-0"
       />
       <Button onClick={handleSave}>Save</Button>
     </PageLayout>

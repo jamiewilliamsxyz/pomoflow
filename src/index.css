@@ -6,7 +6,7 @@
 body {
   font-family: "Inter", sans-serif;
   width: 360px;
-  height: 550px;
+  height: 560px;
   overflow: hidden;
 }
 
@@ -15,7 +15,6 @@ h1 {
   font-weight: 600;
 }
 
-p,
-i {
+p {
   font-size: 20px;
 }

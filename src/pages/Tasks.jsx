@@ -58,7 +58,7 @@ export const Tasks = () => {
 
   return (
     <PageLayout pageTitle="Tasks">
-      <div className="flex flex-col gap-2 max-h-80 overflow-y-auto">
+      <div className="flex flex-col gap-2 max-h-96 overflow-y-auto">
         {tasks}
       </div>
 
