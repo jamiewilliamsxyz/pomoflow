@@ -18,6 +18,22 @@ export const Tasks = () => {
     setUserTasks(userTasks.filter((task) => task.id !== id));
   };
 
+  const updateContent = (id, updatedContent) => {
+    setUserTasks((prev) =>
+      prev.map((task) =>
+        task.id === id ? { ...task, content: updatedContent } : task
+      )
+    );
+  };
+
+  const updateCompleted = (id, updatedCompleted) => {
+    setUserTasks((prev) =>
+      prev.map((task) =>
+        task.id === id ? { ...task, completed: updatedCompleted } : task
+      )
+    );
+  };
+
   const handleSave = () => {
     chrome.storage.local.set({ taskData: userTasks });
   };
@@ -32,8 +48,11 @@ export const Tasks = () => {
     <TaskCard
       key={task.id}
       id={task.id}
-      defaultContent={task.content}
+      taskContent={task.content}
+      taskCompleted={task.completed}
       onRemove={removeTask}
+      onContentUpdate={updateContent}
+      onCompletedUpdate={updateCompleted}
     />
   ));
 

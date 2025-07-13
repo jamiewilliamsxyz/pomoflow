@@ -1,27 +1,54 @@
 import { useState, useEffect } from "react";
 
-export const TaskCard = ({ defaultContent, id, onRemove }) => {
+export const TaskCard = ({
+  taskContent,
+  taskCompleted,
+  id,
+  onRemove,
+  onContentUpdate,
+  onCompletedUpdate,
+}) => {
   const [content, setContent] = useState("");
+  const [completed, setCompleted] = useState(false);
 
   const handleRemove = () => {
     onRemove(id);
   };
 
+  const handleContent = (e) => {
+    const updatedContent = e.target.value;
+    setContent(updatedContent);
+    onContentUpdate(id, updatedContent);
+  };
+
+  const handleCompleted = (e) => {
+    const updatedCompleted = e.target.checked;
+    setCompleted(updatedCompleted);
+    onCompletedUpdate(id, updatedCompleted);
+  };
+
   useEffect(() => {
-    if (defaultContent) {
-      setContent(defaultContent);
+    if (taskContent !== undefined) {
+      setContent(taskContent);
     }
-  }, []);
+    if (taskCompleted !== undefined) {
+      setCompleted(taskCompleted);
+    }
+  }, [taskContent, taskCompleted]);
 
   return (
     <div className="flex flex-row gap-2 items-center bg-base-300 p-2 rounded-lg shadow-x">
-      <input type="checkbox" className="checkbox checkbox-success" />
-      {/* Check if the task in the array is checked or not checked. When checked run a function to send a message to change the item matching the id to completed: true */}
+      <input
+        type="checkbox"
+        onChange={handleCompleted}
+        checked={completed}
+        className={"checkbox checkbox-success"}
+      />
 
       <input
         type="text"
         value={content}
-        onChange={(e) => setContent(e.target.value)}
+        onChange={handleContent}
         placeholder="Task"
         className="input focus:outline-0"
       />
