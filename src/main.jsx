@@ -7,14 +7,12 @@ import { Settings } from "./pages/Settings.jsx";
 import { Stats } from "./pages/Stats.jsx";
 import { Notes } from "./pages/Notes.jsx";
 import { Tasks } from "./pages/Tasks.jsx";
-import { Navbar } from "./components/Navbar.jsx";
 
 import "./index.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <MemoryRouter>
-      <Navbar />
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/settings" element={<Settings />} />

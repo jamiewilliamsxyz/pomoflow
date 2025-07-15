@@ -1,11 +1,15 @@
 import { PageLayout } from "../components/PageLayout";
 import { dateLogs } from "../background";
+import { Button } from "../components/ui/Button";
+
+// Make logs work with length and date
+// Make export CSV work
 
 export const Stats = () => {
   const logs = dateLogs.map((log, index) => (
     <li
       key={index}
-      className="text-[16px] bg-base-300 rounded-lg shadow-xl p-1 w-full"
+      className="text-[16px] bg-base-100 rounded-lg shadow-sm p-1 w-full"
     >
       {log}
     </li>
@@ -14,20 +18,27 @@ export const Stats = () => {
 
   return (
     <PageLayout pageTitle="Stats">
-      <div className="w-full text-center flex flex-col gap-5 items-center bg-base-300 p-4 rounded-lg shadow-xl">
-        <h2 className="font-semibold text-xl">Total Pomodoros Completed</h2>
-        <p className="bg-base-100 p-2 rounded-lg w-full">{totalCompleted}</p>
+      <div className="flex flex-col gap-4 mt-2 items-center">
+        <h2 className="font-semibold text-xl text-center">
+          Total Pomodoros Completed
+        </h2>
+
+        <p className="w-[320px] bg-base-200 py-2 rounded-lg shadow-sm text-center">
+          {totalCompleted}
+        </p>
+
         {/* Add past 1, 7, 30, 182, 365 days */}
       </div>
-
-      <div className="p-4 text-center flex flex-col gap-5 items-center bg-base-300 w-full rounded-lg shadow-xl">
-        <h2 className="font-semibold text-xl">
+      <div className="flex flex-col items-center gap-4 mt-4">
+        <h2 className="font-semibold text-xl text-center">
           Dates When You Completed a Pomodoro
         </h2>
-        <ul className="rounded-lg bg-base-100 w-full p-4 flex flex-col gap-4 max-h-60 overflow-y-auto">
+
+        <ul className="flex flex-col gap-4 bg-base-200 p-4 rounded-lg shadow-sm w-full text-center max-h-96 overflow-y-auto">
           {logs}
         </ul>
       </div>
+      <Button>Export CSV</Button>
     </PageLayout>
   );
 };
