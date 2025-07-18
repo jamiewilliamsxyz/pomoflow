@@ -9,7 +9,7 @@ export const Stats = () => {
   const logs = dateLogs.map((log, index) => (
     <li
       key={index}
-      className="text-[16px] bg-base-100 rounded-lg shadow-sm p-1 w-full"
+      className="text-[14px] bg-base-100 rounded-lg shadow-sm p-1 w-full"
     >
       {log}
     </li>
@@ -34,7 +34,7 @@ export const Stats = () => {
           Dates When You Completed a Pomodoro
         </h2>
 
-        <ul className="flex flex-col gap-4 bg-base-200 p-4 rounded-lg shadow-sm w-full text-center max-h-96 overflow-y-auto">
+        <ul className="w-[320px] flex flex-col gap-4 bg-base-200 p-4 rounded-lg shadow-sm text-center max-h-96 overflow-y-auto">
           {logs}
         </ul>
       </div>

@@ -10,7 +10,11 @@ export const RangeSlider = ({
 
   return (
     <div className="flex flex-col gap-1">
-      <label htmlFor={setting}>{settingName}</label>
+      <div className="flex flex-row justify-between">
+        <label htmlFor={setting}>{settingName}</label>
+        <p>00:00</p>
+      </div>
+
       <input
         type="range"
         id={setting}
@@ -20,7 +24,7 @@ export const RangeSlider = ({
         onChange={(e) => {
           setValue(Number(e.target.value));
         }}
-        className="range"
+        className="range range-sm"
       />
     </div>
   );

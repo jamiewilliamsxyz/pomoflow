@@ -1,12 +1,14 @@
 import { useLocation } from "react-router-dom";
 import { NavItem } from "./ui/NavItem";
 
+import { Timer, ListTodo, StickyNote, BarChart3, Settings } from "lucide-react";
+
 const navItems = [
-  { name: "Timer", path: "/", icon: "⏳" },
-  { name: "Tasks", path: "/tasks", icon: "🗂️" },
-  { name: "Notes", path: "/notes", icon: "📝" },
-  { name: "Stats", path: "/stats", icon: "📊" },
-  { name: "Settings", path: "/settings", icon: "⚙️" },
+  { name: "Timer", path: "/", icon: Timer },
+  { name: "Tasks", path: "/tasks", icon: ListTodo },
+  { name: "Notes", path: "/notes", icon: StickyNote },
+  { name: "Stats", path: "/stats", icon: BarChart3 },
+  { name: "Settings", path: "/settings", icon: Settings },
 ];
 
 export const Navbar = () => {

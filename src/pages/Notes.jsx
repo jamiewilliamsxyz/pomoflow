@@ -17,12 +17,15 @@ export const Notes = () => {
 
   return (
     <PageLayout pageTitle="Notes">
-      <textarea
-        onChange={(e) => setUserNotes(e.target.value)}
-        value={userNotes}
-        placeholder="Notes"
-        className="textarea textarea-lg resize-none w-full h-96 focus:outline-0"
-      />
+      <div className="w-[320px] bg-base-200 p-4 rounded-lg shadow-sm">
+        <textarea
+          onChange={(e) => setUserNotes(e.target.value)}
+          value={userNotes}
+          placeholder="Notes"
+          className="textarea textarea-md resize-none h-96 focus:outline-0 rounded-lg"
+        />
+      </div>
+
       <Button onClick={handleSave}>Save</Button>
     </PageLayout>
   );
