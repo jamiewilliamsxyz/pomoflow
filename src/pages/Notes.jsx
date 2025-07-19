@@ -2,17 +2,19 @@ import { useState, useEffect } from "react";
 import { PageLayout } from "../components/PageLayout";
 import { Button } from "../components/ui/Button";
 
+// Add multiple notes
+
 export const Notes = () => {
   const [userNotes, setUserNotes] = useState("");
 
   useEffect(() => {
-    chrome.storage.local.get(["notesData"]).then((result) => {
+    chrome.storage.sync.get(["notesData"]).then((result) => {
       setUserNotes(result.notesData || "");
     });
   }, []);
 
   const handleSave = () => {
-    chrome.storage.local.set({ notesData: userNotes });
+    chrome.storage.sync.set({ notesData: userNotes });
   };
 
   return (

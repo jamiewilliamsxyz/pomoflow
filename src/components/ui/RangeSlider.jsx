@@ -1,29 +1,45 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { SettingsContext } from "../../context/SettingsContext";
 
-export const RangeSlider = ({
-  settingName,
-  setting,
-  maxRange,
-  defaultValue,
-}) => {
-  const [value, setValue] = useState(defaultValue);
+const formatTime = (minutes) => {
+  const mins = Math.floor(minutes);
+  const secs = 0;
+  const formattedMins = mins.toString().padStart(2, "0");
+  const formattedSecs = secs.toString().padStart(2, "0");
+  return `${formattedMins}:${formattedSecs}`;
+};
+
+export const RangeSlider = ({ settingName, setting, maxRange, minRange }) => {
+  const { settings, setSettings } = useContext(SettingsContext);
+
+  const handleChange = (e) => {
+    setSettings({ ...settings, [setting]: Number(e.target.value) });
+  };
+
+  let displayValue;
+
+  if (setting === "notificationVolume") {
+    displayValue = `${settings[setting]}%`;
+  } else if (setting === "longBreakInterval") {
+    displayValue = settings[setting];
+  } else {
+    displayValue = formatTime(settings[setting]);
+  }
 
   return (
     <div className="flex flex-col gap-1">
       <div className="flex flex-row justify-between">
         <label htmlFor={setting}>{settingName}</label>
-        <p>00:00</p>
+        <p>{displayValue}</p>
       </div>
 
       <input
         type="range"
         id={setting}
-        min={0}
+        min={minRange}
         max={maxRange}
-        value={value}
-        onChange={(e) => {
-          setValue(Number(e.target.value));
-        }}
+        value={settings[setting]}
+        onChange={handleChange}
         className="range range-sm"
       />
     </div>

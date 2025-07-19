@@ -37,11 +37,11 @@ export const Tasks = () => {
   };
 
   const handleSave = () => {
-    chrome.storage.local.set({ taskData: userTasks });
+    chrome.storage.sync.set({ taskData: userTasks });
   };
 
   useEffect(() => {
-    chrome.storage.local.get(["taskData"]).then((result) => {
+    chrome.storage.sync.get(["taskData"]).then((result) => {
       setUserTasks(result.taskData || []);
     });
   }, []);

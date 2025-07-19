@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { SettingsContext } from "../context/SettingsContext";
 import { PageLayout } from "../components/PageLayout";
 import { RangeSlider } from "../components/ui/RangeSlider";
 import { SelectBox } from "../components/ui/SelectBox";
@@ -6,7 +8,11 @@ import { NotificationMessageInput } from "../components/NotificationMessageInput
 import { Button } from "../components/ui/Button";
 
 export const Settings = () => {
-  const handleSave = () => {};
+  const { settings } = useContext(SettingsContext);
+
+  const handleSave = () => {
+    chrome.storage.sync.set({ settingsData: settings });
+  };
 
   return (
     <PageLayout pageTitle="Settings">
@@ -17,26 +23,26 @@ export const Settings = () => {
           <RangeSlider
             settingName="Pomodoro Length"
             setting="pomodoroLength"
-            maxRange="60"
-            defaultValue="25"
+            maxRange="90"
+            minRange="1"
           />
           <RangeSlider
             settingName="Short Break Length"
-            setting="ShortBreakLength"
-            maxRange="60"
-            defaultValue="5"
+            setting="shortBreakLength"
+            maxRange="30"
+            minRange="1"
           />
           <RangeSlider
             settingName="Long Break Length"
-            setting="LongBreakLength"
+            setting="longBreakLength"
             maxRange="60"
-            defaultValue="15"
+            minRange="1"
           />
           <RangeSlider
             settingName="Long Break Interval"
             setting="longBreakInterval"
-            maxRange="10"
-            defaultValue="4"
+            maxRange="8"
+            minRange="1"
           />
         </div>
       </div>
@@ -50,19 +56,25 @@ export const Settings = () => {
           <ThemeSelect />
           <SelectBox
             settingName="Font"
-            settingAction="Select a font"
             setting="font"
+            options={[
+              "Default",
+              "Roboto",
+              "Open Sans",
+              "Merriweather",
+              "Fire Code",
+            ]}
           />
           <SelectBox
-            settingName="Notification"
-            settingAction="Select a notification sound"
-            setting="notification"
+            settingName="Notification Sound"
+            setting="notificationSound"
+            options={["Default", "Error", "Info", "Ping", "Success", "Welcome"]}
           />
           <RangeSlider
             settingName="Notification Volume"
             setting="notificationVolume"
             maxRange="100"
-            value="50"
+            minRange="0"
           />
           <NotificationMessageInput />
         </div>
