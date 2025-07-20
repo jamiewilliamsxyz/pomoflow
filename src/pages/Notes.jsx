@@ -10,6 +10,8 @@ export const Notes = () => {
 
   // See DaisyUI components, maybe use lists
 
+  const createNote = () => {};
+
   return (
     <PageLayout>
       <div className="flex flex-col gap-2 max-h-96 overflow-y-auto pb-0.5">
@@ -17,7 +19,7 @@ export const Notes = () => {
           <NoteCard key={note.id} noteTitle={note.noteTitle} />
         ))}
       </div>
-      <Button onClick={createTask}>Create</Button>
+      <Button onClick={createNote}>Create</Button>
     </PageLayout>
   );
 };
