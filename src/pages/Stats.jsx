@@ -17,7 +17,7 @@ export const Stats = () => {
   const totalCompleted = dateLogs.length;
 
   return (
-    <PageLayout pageTitle="Stats">
+    <PageLayout>
       <div className="flex flex-col gap-4 mt-2 items-center">
         <h2 className="font-semibold text-xl text-center">
           Total Pomodoros Completed

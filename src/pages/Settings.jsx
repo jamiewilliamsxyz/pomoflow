@@ -15,7 +15,7 @@ export const Settings = () => {
   };
 
   return (
-    <PageLayout pageTitle="Settings">
+    <PageLayout>
       <div className="flex flex-col items-center gap-4 mt-2">
         <h2 className="font-semibold text-xl text-center">Pomodoro Settings</h2>
 

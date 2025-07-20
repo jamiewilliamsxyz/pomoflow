@@ -46,22 +46,20 @@ export const Tasks = () => {
     });
   }, []);
 
-  const tasks = userTasks.map((task) => (
-    <TaskCard
-      key={task.id}
-      id={task.id}
-      taskContent={task.content}
-      taskCompleted={task.completed}
-      onRemove={removeTask}
-      onContentUpdate={updateContent}
-      onCompletedUpdate={updateCompleted}
-    />
-  ));
-
   return (
-    <PageLayout pageTitle="Tasks">
+    <PageLayout>
       <div className="flex flex-col gap-2 max-h-96 overflow-y-auto pb-0.5">
-        {tasks}
+        {userTasks.map((task) => (
+          <TaskCard
+            key={task.id}
+            id={task.id}
+            taskContent={task.content}
+            taskCompleted={task.completed}
+            onRemove={removeTask}
+            onContentUpdate={updateContent}
+            onCompletedUpdate={updateCompleted}
+          />
+        ))}
       </div>
 
       <div className="flex flex-row gap-6">

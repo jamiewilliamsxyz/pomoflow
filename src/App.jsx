@@ -2,6 +2,8 @@ import { PageLayout } from "./components/PageLayout";
 import { Button } from "./components/ui/Button";
 import { LinkButton } from "./components/ui/LinkButton";
 
+// Keep logic backend
+
 export const App = () => {
   let counter = 100;
   return (
