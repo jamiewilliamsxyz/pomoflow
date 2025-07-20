@@ -79,7 +79,9 @@ export const Settings = () => {
           <NotificationMessageInput />
         </div>
       </div>
-      <Button onClick={handleSave}>Save</Button>
+      <Button onClick={handleSave} colour="success">
+        Save
+      </Button>
     </PageLayout>
   );
 };

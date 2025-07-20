@@ -1,6 +1,11 @@
-export const Button = ({ children, ...props }) => {
+export const Button = ({
+  children,
+  size = "md",
+  colour = "primary",
+  ...props
+}) => {
   return (
-    <button {...props} className="btn btn-primary btn-lg">
+    <button {...props} className={`btn btn-soft btn-${size} btn-${colour}`}>
       {children}
     </button>
   );

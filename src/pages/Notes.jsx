@@ -1,25 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PageLayout } from "../components/PageLayout";
-import { Button } from "../components/ui/Button";
-import { NoteCard } from "../components/NoteCard";
+import { NoteList } from "../components/NoteList";
+import { Note } from "../components/Note";
 
 export const Notes = () => {
-  const [notes, setNotes] = useState([
-    { id: 1, noteTitle: "Work Notes", noteContent: "work notes content test" },
-  ]);
+  const [notes, setNotes] = useState([]);
+  const [editMode, setEditMode] = useState(false);
+  const [selectedNoteId, setSelectedNoteId] = useState(null);
 
-  // See DaisyUI components, maybe use lists
+  const selectedNote = notes.find((note) => note.id === selectedNoteId);
 
-  const createNote = () => {};
+  useEffect(() => {
+    chrome.storage.sync.get(["notesData"]).then((result) => {
+      setNotes(result.notesData || []);
+    });
+  }, []);
 
   return (
     <PageLayout>
-      <div className="flex flex-col gap-2 max-h-96 overflow-y-auto pb-0.5">
-        {notes.map((note) => (
-          <NoteCard key={note.id} noteTitle={note.noteTitle} />
-        ))}
-      </div>
-      <Button onClick={createNote}>Create</Button>
+      {editMode ? (
+        <Note
+          selectedNote={selectedNote}
+          setEditMode={setEditMode}
+          setNotes={setNotes}
+          notes={notes}
+        />
+      ) : (
+        <NoteList
+          notes={notes}
+          setNotes={setNotes}
+          editMode={editMode}
+          setEditMode={setEditMode}
+          setSelectedNoteId={setSelectedNoteId}
+        />
+      )}
     </PageLayout>
   );
 };

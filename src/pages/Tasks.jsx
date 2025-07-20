@@ -3,7 +3,7 @@ import { PageLayout } from "../components/PageLayout";
 import { Button } from "../components/ui/Button";
 import { TaskCard } from "../components/ui/TaskCard";
 
-// Add task priority system
+// Add task priority system?
 
 export const Tasks = () => {
   const [userTasks, setUserTasks] = useState([]);
@@ -48,7 +48,7 @@ export const Tasks = () => {
 
   return (
     <PageLayout>
-      <div className="flex flex-col gap-2 max-h-96 overflow-y-auto pb-0.5">
+      <ul className="w-[320px] list bg-base-200 rounded-box shadow-md max-h-80 overflow-y-auto">
         {userTasks.map((task) => (
           <TaskCard
             key={task.id}
@@ -60,11 +60,13 @@ export const Tasks = () => {
             onCompletedUpdate={updateCompleted}
           />
         ))}
-      </div>
+      </ul>
 
       <div className="flex flex-row gap-6">
         <Button onClick={createTask}>Create</Button>
-        <Button onClick={handleSave}>Save</Button>
+        <Button onClick={handleSave} colour="success">
+          Save
+        </Button>
       </div>
     </PageLayout>
   );

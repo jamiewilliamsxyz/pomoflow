@@ -4,6 +4,7 @@ import { Button } from "../components/ui/Button";
 
 // Make logs work with length and date
 // Make export CSV work
+// https://daisyui.com/components/stat/
 
 export const Stats = () => {
   const logs = dateLogs.map((log, index) => (
