@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Button } from "../components/ui/Button";
+import { SaveButton } from "../components/ui/SaveButton";
+import { BackButton } from "../components/ui/BackButton";
 
 export const Note = ({ selectedNote, setEditMode, setNotes, notes }) => {
   const [title, setTitle] = useState(selectedNote.title);
@@ -20,8 +21,8 @@ export const Note = ({ selectedNote, setEditMode, setNotes, notes }) => {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         type="text"
-        placeholder="Untitled"
-        maxLength="20"
+        placeholder="Note"
+        maxLength="24"
         className="input border-0 focus:outline-0 font-medium text-lg"
       />
       <textarea
@@ -31,12 +32,8 @@ export const Note = ({ selectedNote, setEditMode, setNotes, notes }) => {
         className="textarea textarea-md resize-none h-96 border-0 focus:outline-0 rounded-lg"
       />
       <div className="flex flex-row gap-4 justify-center">
-        <Button onClick={handleSave} colour="success">
-          Save
-        </Button>
-        <Button onClick={() => setEditMode(false)} colour="warning">
-          Back
-        </Button>
+        <SaveButton onClick={handleSave}>Save</SaveButton>
+        <BackButton onClick={() => setEditMode(false)}>Back</BackButton>
       </div>
     </div>
   );

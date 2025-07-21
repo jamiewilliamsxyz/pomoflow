@@ -5,7 +5,7 @@ import { RangeSlider } from "../components/ui/RangeSlider";
 import { SelectBox } from "../components/ui/SelectBox";
 import { ThemeSelect } from "../components/ThemeSelect";
 import { NotificationMessageInput } from "../components/NotificationMessageInput.jsx";
-import { Button } from "../components/ui/Button";
+import { SaveButton } from "../components/ui/SaveButton";
 
 export const Settings = () => {
   const { settings } = useContext(SettingsContext);
@@ -79,9 +79,9 @@ export const Settings = () => {
           <NotificationMessageInput />
         </div>
       </div>
-      <Button onClick={handleSave} colour="success">
+      <SaveButton onClick={handleSave} colour="success">
         Save
-      </Button>
+      </SaveButton>
     </PageLayout>
   );
 };

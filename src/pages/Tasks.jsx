@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { PageLayout } from "../components/PageLayout";
-import { Button } from "../components/ui/Button";
+import { DefaultButton } from "../components/ui/DefaultButton";
+import { SaveButton } from "../components/ui/SaveButton";
 import { TaskCard } from "../components/ui/TaskCard";
 
-// Add task priority system?
+// Add task priority system? https://daisyui.com/components/badge/
 
 export const Tasks = () => {
   const [userTasks, setUserTasks] = useState([]);
@@ -63,10 +64,8 @@ export const Tasks = () => {
       </ul>
 
       <div className="flex flex-row gap-6">
-        <Button onClick={createTask}>Create</Button>
-        <Button onClick={handleSave} colour="success">
-          Save
-        </Button>
+        <DefaultButton onClick={createTask}>Create</DefaultButton>
+        <SaveButton onClick={handleSave}>Save</SaveButton>
       </div>
     </PageLayout>
   );

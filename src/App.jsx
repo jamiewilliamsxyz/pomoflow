@@ -1,6 +1,6 @@
 import { SkipForward, TimerReset } from "lucide-react";
 import { PageLayout } from "./components/PageLayout";
-import { Button } from "./components/ui/Button";
+import { DefaultButton } from "./components/ui/DefaultButton";
 
 // Keep logic backend
 
@@ -9,8 +9,7 @@ export const App = () => {
   return (
     <PageLayout>
       <div className="flex flex-grow flex-col justify-center">
-        <div className="w-[320px] my-2 flex flex-col items-center gap-4 bg-base-200 p-4 rounded-lg shadow-sm">
-          <span className="text-sm font-light">#1</span>
+        <div className="w-[320px] flex flex-col items-center gap-4 bg-base-200 p-4 rounded-lg shadow-sm">
           <span className="countdown font-mono text-7xl text-base-content font-semibold">
             <span
               style={{ "--value": 24 }}
@@ -36,7 +35,7 @@ export const App = () => {
           ></progress>
 
           <div className="flex flex-col gap-6 items-center">
-            <Button size="lg">Start</Button>
+            <DefaultButton>Start</DefaultButton>
 
             <div className="flex flex-row gap-4">
               <button className="btn btn-ghost btn-square btn-sm">

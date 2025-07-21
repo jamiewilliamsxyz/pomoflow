@@ -1,6 +1,6 @@
 import { PageLayout } from "../components/PageLayout";
 import { dateLogs } from "../background";
-import { Button } from "../components/ui/Button";
+import { DefaultButton } from "../components/ui/DefaultButton";
 
 // Make logs work with length and date
 // Make export CSV work
@@ -28,7 +28,7 @@ export const Stats = () => {
           {totalCompleted}
         </p>
 
-        {/* Add past 1, 7, 30, 182, 365 days */}
+        {/* Add past 7, 30, 182, 365 days and pomodoros complete today */}
       </div>
       <div className="flex flex-col items-center gap-4 mt-4">
         <h2 className="font-semibold text-xl text-center">
@@ -39,7 +39,7 @@ export const Stats = () => {
           {logs}
         </ul>
       </div>
-      <Button>Export CSV</Button>
+      <DefaultButton>Export CSV</DefaultButton>
     </PageLayout>
   );
 };

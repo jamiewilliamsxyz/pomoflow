@@ -1,4 +1,4 @@
-import { Button } from "../components/ui/Button";
+import { DefaultButton } from "../components/ui/DefaultButton";
 import { NoteCard } from "../components/NoteCard";
 
 export const NoteList = ({
@@ -39,7 +39,7 @@ export const NoteList = ({
           />
         ))}
       </ul>
-      <Button onClick={createNote}>Create</Button>
+      <DefaultButton onClick={createNote}>Create</DefaultButton>
     </>
   );
 };
