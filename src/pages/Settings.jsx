@@ -60,9 +60,10 @@ export const Settings = () => {
             options={[
               "Default",
               "Roboto",
-              "Open Sans",
+              "Oswald",
+              "Fira Code",
               "Merriweather",
-              "Fire Code",
+              "Playfair",
             ]}
           />
           <SelectBox
@@ -79,9 +80,7 @@ export const Settings = () => {
           <NotificationMessageInput />
         </div>
       </div>
-      <SaveButton onClick={handleSave} colour="success">
-        Save
-      </SaveButton>
+      <SaveButton onClick={handleSave}>Save</SaveButton>
     </PageLayout>
   );
 };

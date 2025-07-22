@@ -1,4 +1,15 @@
 @import "tailwindcss";
+
+@theme {
+  --font-inter: "Inter", "sans-serif";
+  --font-roboto: "Roboto", "sans-serif";
+  --font-merriweather: "Merriweather", "serif";
+  --font-fira_code: "Fira_Code", "monospace";
+  --font-oswald: "Oswald", "sans-serif";
+  --font-playfair_display: "Playfair_Display", "serif";
+  --font-space_mono: "Space_Mono", "monospace";
+}
+
 @plugin "daisyui" {
   themes: all;
 }
