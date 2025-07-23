@@ -52,7 +52,7 @@ export const Tasks = () => {
   return (
     <PageLayout>
       <CreateTask onCreate={createTask} />
-      <ul className="w-[320px] list bg-base-200 rounded-box shadow-md max-h-72 overflow-y-auto">
+      <ul className="w-[320px] list p-1 bg-base-200 rounded-box shadow-md max-h-72 overflow-y-auto">
         {userTasks
           .toSorted((a, b) => {
             if (a.completed !== b.completed) return a.completed ? 1 : -1;

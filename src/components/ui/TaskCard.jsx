@@ -60,12 +60,12 @@ export const TaskCard = ({
   useEffect(() => {}, [taskCompleted]);
 
   return (
-    <li className="list-row flex flex-row p-2 justify-between items-center">
+    <li className="list-row flex flex-row justify-between items-center">
       <div className="flex flex-col gap-2">
         <div className={`badge badge-sm badge-soft ${badgeColour}`}>
           {taskPriority}
         </div>
-        <h2 className={`text-[16px] ${completedStyle}`}>{taskName}</h2>
+        <h2 className={`text-[16px] ml-1 ${completedStyle}`}>{taskName}</h2>
       </div>
 
       <div className="flex flex-row gap-2 self-start">
