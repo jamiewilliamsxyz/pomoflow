@@ -1,32 +1,34 @@
 import { useState, useEffect } from "react";
 import { PageLayout } from "../components/PageLayout";
-import { DefaultButton } from "../components/ui/DefaultButton";
 import { SaveButton } from "../components/ui/SaveButton";
+import { CreateTask } from "../components/CreateTask";
 import { TaskCard } from "../components/ui/TaskCard";
 
-// Add task priority system? https://daisyui.com/components/badge/
+const priorityOrder = {
+  Urgent: 1,
+  High: 2,
+  Medium: 3,
+  Low: 4,
+  Archive: 5,
+};
 
 export const Tasks = () => {
   const [userTasks, setUserTasks] = useState([]);
 
-  const createTask = () => {
+  const createTask = (taskName, taskPriority) => {
+    // Using uuid is more robust
     const maxId =
-      userTasks.length > 0 ? Math.max(...userTasks.map((t) => t.id)) : 0;
+      userTasks.length > 0 ? Math.max(...userTasks.map((task) => task.id)) : 0;
     const newId = maxId + 1;
 
-    setUserTasks([...userTasks, { id: newId, content: "", completed: false }]);
+    setUserTasks([
+      ...userTasks,
+      { id: newId, name: taskName, priority: taskPriority, completed: false },
+    ]);
   };
 
   const removeTask = (id) => {
     setUserTasks(userTasks.filter((task) => task.id !== id));
-  };
-
-  const updateContent = (id, updatedContent) => {
-    setUserTasks((prev) =>
-      prev.map((task) =>
-        task.id === id ? { ...task, content: updatedContent } : task
-      )
-    );
   };
 
   const updateCompleted = (id, updatedCompleted) => {
@@ -49,24 +51,28 @@ export const Tasks = () => {
 
   return (
     <PageLayout>
-      <ul className="w-[320px] list bg-base-200 rounded-box shadow-md max-h-80 overflow-y-auto">
-        {userTasks.map((task) => (
-          <TaskCard
-            key={task.id}
-            id={task.id}
-            taskContent={task.content}
-            taskCompleted={task.completed}
-            onRemove={removeTask}
-            onContentUpdate={updateContent}
-            onCompletedUpdate={updateCompleted}
-          />
-        ))}
+      <CreateTask onCreate={createTask} />
+      <ul className="w-[320px] list bg-base-200 rounded-box shadow-md max-h-72 overflow-y-auto">
+        {userTasks
+          .toSorted((a, b) => {
+            if (a.completed !== b.completed) return a.completed ? 1 : -1;
+            return priorityOrder[a.priority] - priorityOrder[b.priority];
+          })
+
+          .map((task) => (
+            <TaskCard
+              key={task.id}
+              id={task.id}
+              taskName={task.name}
+              taskCompleted={task.completed}
+              taskPriority={task.priority}
+              onRemove={removeTask}
+              onCompletedUpdate={updateCompleted}
+            />
+          ))}
       </ul>
 
-      <div className="flex flex-row gap-6">
-        <DefaultButton onClick={createTask}>Create</DefaultButton>
-        <SaveButton onClick={handleSave}>Save</SaveButton>
-      </div>
+      <SaveButton onClick={handleSave}>Save</SaveButton>
     </PageLayout>
   );
 };

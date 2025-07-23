@@ -2,24 +2,19 @@ import { useState, useEffect } from "react";
 import { Trash } from "lucide-react";
 
 export const TaskCard = ({
-  taskContent,
+  taskName,
+  taskPriority,
   taskCompleted,
   id,
   onRemove,
-  onContentUpdate,
   onCompletedUpdate,
 }) => {
-  const [content, setContent] = useState("");
   const [completed, setCompleted] = useState(false);
+  const [badgeColour, setBadgeColour] = useState("");
+  const [completedStyle, setCompletedStyle] = useState("");
 
   const handleRemove = () => {
     onRemove(id);
-  };
-
-  const handleContent = (e) => {
-    const updatedContent = e.target.value;
-    setContent(updatedContent);
-    onContentUpdate(id, updatedContent);
   };
 
   const handleCompleted = (e) => {
@@ -29,35 +24,58 @@ export const TaskCard = ({
   };
 
   useEffect(() => {
-    if (taskContent !== undefined) {
-      setContent(taskContent);
+    switch (taskPriority) {
+      case "Urgent":
+        setBadgeColour("badge-primary");
+        break;
+      case "High":
+        setBadgeColour("badge-error");
+        break;
+      case "Medium":
+        setBadgeColour("badge-warning");
+        break;
+      case "Low":
+        setBadgeColour("badge-success");
+        break;
+      case "Archive":
+        setBadgeColour("badge-secondary");
+        break;
+      default:
+        setBadgeColour("badge-neutral");
     }
+  }, []);
+
+  useEffect(() => {
     if (taskCompleted !== undefined) {
       setCompleted(taskCompleted);
     }
-  }, [taskContent, taskCompleted]);
+
+    if (taskCompleted) {
+      setCompletedStyle("line-through");
+    } else {
+      setCompletedStyle("");
+    }
+  }, [taskCompleted]);
+
+  useEffect(() => {}, [taskCompleted]);
 
   return (
-    <li className="list-row flex flex-row p-3 justify-between items-center">
-      <input
-        type="text"
-        value={content}
-        onChange={handleContent}
-        placeholder="Task"
-        className="font-medium text-[16px] input border-0 focus:outline-0"
-      />
-      <div className="flex flex-row gap-1.5 items-center">
+    <li className="list-row flex flex-row p-2 justify-between items-center">
+      <div className="flex flex-col gap-2">
+        <div className={`badge badge-sm badge-soft ${badgeColour}`}>
+          {taskPriority}
+        </div>
+        <h2 className={`text-[16px] ${completedStyle}`}>{taskName}</h2>
+      </div>
+
+      <div className="flex flex-row gap-2 self-start">
         <input
           type="checkbox"
           onChange={handleCompleted}
           checked={completed}
           className={"checkbox checkbox-sm checkbox-success"}
         />
-
-        <button
-          onClick={handleRemove}
-          className="btn btn-square btn-ghost btn-sm"
-        >
+        <button onClick={handleRemove} className="cursor-pointer">
           <Trash className="w-5 h-5 text-error" />
         </button>
       </div>
