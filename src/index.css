@@ -11,8 +11,8 @@
 }
 
 @plugin "daisyui" {
-  themes: dark, light, cupcake, bumblebee, synthwave, retro, cyberpunk, forest,
-    aqua, pastel, dracula, winter, nord;
+  themes: dark --default, light, cupcake, bumblebee, synthwave, retro, cyberpunk,
+    forest, aqua, pastel, dracula, winter, nord;
 }
 
 body {

@@ -26,11 +26,10 @@ export const ThemeSelect = () => {
       <label htmlFor="themeSelect">Theme</label>
       <select
         data-choose-theme
-        defaultValue="Select a theme"
         className="select hover:outline-0 active:outline-0 focus:outline-0"
         id="themeSelect"
       >
-        <option value="">Default</option>
+        <option value="dark">Default</option>
         {themes.map((theme) => (
           <option key={theme} value={theme}>
             {theme.charAt(0).toUpperCase() + theme.slice(1)}
