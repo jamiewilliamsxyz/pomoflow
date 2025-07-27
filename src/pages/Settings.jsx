@@ -21,8 +21,8 @@ export const Settings = () => {
 
         <div className="text-[16px] w-[320px] flex flex-col gap-5 bg-base-200 p-4 rounded-lg shadow-sm">
           <RangeSlider
-            settingName="Pomodoro Length"
-            setting="pomodoroLength"
+            settingName="Focus Length"
+            setting="focusLength"
             maxRange="90"
             minRange="1"
           />

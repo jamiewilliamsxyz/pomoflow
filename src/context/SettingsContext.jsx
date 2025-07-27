@@ -4,7 +4,7 @@ export const SettingsContext = createContext();
 
 const SettingsContextProvider = ({ children }) => {
   const [settings, setSettings] = useState({
-    pomodoroLength: 25,
+    focusLength: 25,
     shortBreakLength: 5,
     longBreakLength: 15,
     longBreakInterval: 4,
