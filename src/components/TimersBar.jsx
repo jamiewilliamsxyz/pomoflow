@@ -2,11 +2,14 @@ export const TimersBar = () => {
   const timers = ["Focus", "Short Break", "Long Break"];
 
   return (
-    <div className="w-full flex items-center justify-center gap-2 bg-base-200 rounded-lg shadow-md p-2">
+    <div
+      role="tablist"
+      className="tabs tabs-border flex items-center justify-center w-full bg-base-200 rounded-lg shadow-md p-1"
+    >
       {timers.map((timer) => (
-        <button key={timer} className="btn btn-soft btn-sm btn-primary flex-1">
+        <a key={timer} role="tab" className="tab">
           {timer}
-        </button>
+        </a>
       ))}
     </div>
   );
