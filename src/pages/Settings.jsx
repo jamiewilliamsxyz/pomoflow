@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { SettingsContext } from "../context/SettingsContext";
 import { PageLayout } from "../components/PageLayout";
 import { RangeSlider } from "../components/ui/RangeSlider";
+import { AutoStartToggle } from "../components/AutoStartToggle";
 import { SelectBox } from "../components/ui/SelectBox";
 import { ThemeSelect } from "../components/ThemeSelect";
 import { NotificationMessageInput } from "../components/NotificationMessageInput.jsx";
@@ -44,6 +45,7 @@ export const Settings = () => {
             maxRange="8"
             minRange="1"
           />
+          <AutoStartToggle />
         </div>
       </div>
 

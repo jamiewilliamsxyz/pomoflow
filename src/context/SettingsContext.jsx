@@ -8,6 +8,7 @@ const SettingsContextProvider = ({ children }) => {
     shortBreakLength: 5,
     longBreakLength: 15,
     longBreakInterval: 4,
+    autoStart: false,
     font: "Inter",
     notificationSound: "Default",
     notificationVolume: 50,
