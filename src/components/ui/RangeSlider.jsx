@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { SettingsContext } from "../../context/SettingsContext";
 
+// Put formatTime in seperate file
 const formatTime = (minutes) => {
   const mins = Math.floor(minutes);
   const secs = 0;

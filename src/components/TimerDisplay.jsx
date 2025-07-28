@@ -1,0 +1,24 @@
+import { TimerContext } from "../context/TimerContext";
+import { useContext } from "react";
+
+export const TimerDisplay = () => {
+  const { timerState } = useContext(TimerContext);
+  return (
+    <div className="w-full flex flex-col gap-4 p-6 bg-base-200 rounded-lg shadow-md items-center">
+      {/* <span className="countdown font-mono text-[90px] font-semibold">
+        <span style={{ "--value": 24 }}>24</span>:
+        <span style={{ "--value": 59 }}>59</span>
+      </span> */}
+
+      <h2 className="font-mono text-[90px] font-semibold">
+        {timerState.timeLeft}
+      </h2>
+
+      <progress
+        className="progress progress-success w-full"
+        value={0}
+        max="100"
+      ></progress>
+    </div>
+  );
+};

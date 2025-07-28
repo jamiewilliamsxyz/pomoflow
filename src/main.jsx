@@ -3,6 +3,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { MemoryRouter, Routes, Route } from "react-router-dom";
 import SettingsContextProvider from "./context/SettingsContext.jsx";
+import TimerContextProvider from "./context/TimerContext.jsx";
 import { App } from "./App.jsx";
 import { Settings } from "./pages/Settings.jsx";
 import { Stats } from "./pages/Stats.jsx";
@@ -15,13 +16,15 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <MemoryRouter>
       <SettingsContextProvider>
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/stats" element={<Stats />} />
-          <Route path="/notes" element={<Notes />} />
-          <Route path="/tasks" element={<Tasks />} />
-        </Routes>
+        <TimerContextProvider>
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/stats" element={<Stats />} />
+            <Route path="/notes" element={<Notes />} />
+            <Route path="/tasks" element={<Tasks />} />
+          </Routes>
+        </TimerContextProvider>
       </SettingsContextProvider>
     </MemoryRouter>
   </StrictMode>
