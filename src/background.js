@@ -1,6 +1,74 @@
 // TIMER ENGINE
 
-// MOCK DATA - IGNORE
+// Pull settings from storage
+let currentSettings = null;
+
+const getDefaultSettings = () => ({
+  focusLength: 25,
+  shortBreakLength: 5,
+  longBreakLength: 15,
+  longBreakInterval: 4,
+  autoStart: false,
+  font: "Inter",
+  notificationSound: "Default",
+  notificationVolume: 50,
+  notificationMessage: "Timer ended",
+});
+
+const loadSettings = () => {
+  chrome.storage.sync.get("settingsData", ({ settingsData }) => {
+    currentSettings = settingsData || getDefaultSettings();
+  });
+};
+
+chrome.runtime.onStartup.addListener(loadSettings);
+
+loadSettings();
+
+chrome.storage.onChanged.addListener((changes, areaName) => {
+  if (areaName === "sync" && changes.settingsData) {
+    currentSettings = changes.settingsData.newValue;
+  }
+});
+
+// Background Timer State
+chrome.runtime.onInstalled.addListener(() => {
+  const settings = currentSettings || getDefaultSettings();
+
+  chrome.storage.local.set({
+    timerState: {
+      phase: "focus",
+      timeLeft: settings.focusLength * 60,
+      isRunning: false,
+      pomodoroCount: 0,
+      startTime: null,
+      endTime: null,
+    },
+  });
+});
+
+// Messages (communication with TimerContext)
+chrome.runtime.onMessage.addListener((data) => {
+  switch (data.event) {
+    case "onStart":
+      console.log("Background: start timer");
+      break;
+    case "onStop":
+      console.log("Background: stop timer");
+      break;
+    case "onReset":
+      console.log("Background: reset timer");
+      break;
+    case "onSkip":
+      console.log("Background: skip timer");
+      break;
+    default:
+      break;
+  }
+});
+// Messages background needs to send back: onComplete (timer ended), onTick (broadcast each tick)
+
+// STATS STUFF - IGNORE
 
 /*
 Some info for logging dates in the future:

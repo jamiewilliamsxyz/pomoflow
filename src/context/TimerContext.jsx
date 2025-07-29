@@ -32,7 +32,7 @@ const TimerContextProvider = ({ children }) => {
     setTimerState((prev) => ({ ...prev, phase: updatedPhase }));
 
     // Updating & resetting timeLeft to match the new phases default time in settings
-    let updatedTimeLeft;
+    let updatedTimeLeft = null;
 
     if (updatedPhase === "focus") {
       updatedTimeLeft = settings.focusLength * 60;
@@ -46,7 +46,13 @@ const TimerContextProvider = ({ children }) => {
   };
 
   const handleIsRunning = () => {
-    setTimerState((prev) => ({ ...prev, isRunning: !prev.isRunning }));
+    const updatedIsRunning = !timerState.isRunning;
+
+    setTimerState((prev) => ({ ...prev, isRunning: updatedIsRunning }));
+
+    chrome.runtime.sendMessage({
+      event: updatedIsRunning ? "onStart" : "onStop",
+    });
   };
 
   const stopRunningTimer = () => {
@@ -87,13 +93,18 @@ const TimerContextProvider = ({ children }) => {
       // If the phase isn't focus, it's a break, skip to focus timer
       setNewTimer("focus", settings.focusLength * 60);
     }
+
+    // Send Message to background
+    chrome.runtime.sendMessage({
+      event: "onSkip",
+    });
   };
 
   const handleReset = () => {
     stopRunningTimer();
 
     // Reset timeLeft to the current phases length set in settings
-    let currentPhaseLength;
+    let currentPhaseLength = null;
 
     if (timerState.phase === "focus") {
       currentPhaseLength = settings.focusLength * 60;
@@ -104,6 +115,11 @@ const TimerContextProvider = ({ children }) => {
     }
 
     setTimerState((prev) => ({ ...prev, timeLeft: currentPhaseLength }));
+
+    // Send Message to background
+    chrome.runtime.sendMessage({
+      event: "onReset",
+    });
   };
 
   return (
