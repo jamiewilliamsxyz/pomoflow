@@ -29,6 +29,8 @@ const TimerContextProvider = ({ children }) => {
       return;
     }
 
+    stopRunningTimer();
+
     setTimerState((prev) => ({ ...prev, phase: updatedPhase }));
 
     // Updating & resetting timeLeft to match the new phases default time in settings
@@ -43,6 +45,12 @@ const TimerContextProvider = ({ children }) => {
     }
 
     setTimerState((prev) => ({ ...prev, timeLeft: updatedTimeLeft }));
+
+    // Send message to background with updatedPhase
+    chrome.runtime.sendMessage({
+      event: "onPhaseChange",
+      updatedPhase: updatedPhase,
+    });
   };
 
   const handleIsRunning = () => {
